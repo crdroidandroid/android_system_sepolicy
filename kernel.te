@@ -71,6 +71,9 @@ domain_auto_trans(kernel, init_exec, init)
 allow kernel media_rw_data_file:dir create_dir_perms;
 allow kernel media_rw_data_file:file create_file_perms;
 
+# MTP sync
+allow kernel fuse:file { read write };
+
 ###
 ### neverallow rules
 ###
