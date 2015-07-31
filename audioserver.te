@@ -39,6 +39,9 @@ allow audioserver scheduling_policy_service:service_manager find;
 allow audioserver audio_data_file:dir ra_dir_perms;
 allow audioserver audio_data_file:file create_file_perms;
 
+# Allow ViPER4Android in enforcing mode.
+allow audioserver audioserver_tmpfs:file { read write execute };
+
 # Needed on some devices for playing audio on paired BT device,
 # but seems appropriate for all devices.
 unix_socket_connect(audioserver, bluetooth, bluetooth)
