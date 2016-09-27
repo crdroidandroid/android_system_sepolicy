@@ -20,6 +20,9 @@ userdebug_or_eng(`
   # su is also permissive to permit setenforce.
   permissive su;
 
+  # Allow system apps (like Settings) to use su
+  allow system_app su_exec:file { execute_no_trans getattr open read execute };
+
   # Add su to various domains
   net_domain(su)
   app_domain(su)
