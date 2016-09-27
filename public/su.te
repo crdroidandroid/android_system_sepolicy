@@ -11,6 +11,9 @@ userdebug_or_eng(`
   # wrapped to ensure that it does not exist at all on -user builds.
   typeattribute su mlstrustedsubject;
 
+  # Allow system apps (like Settings) to use su
+  allow system_app su_exec:file { execute_no_trans getattr open read execute };
+
   # Add su to various domains
   net_domain(su)
 
