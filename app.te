@@ -426,7 +426,7 @@ neverallow { appdomain -system_app -shell }
 
 # Ability to perform any filesystem operation other than statfs(2).
 # i.e. no mount(2), unmount(2), etc.
-neverallow appdomain fs_type:filesystem ~getattr;
+neverallow appdomain -sudaemon fs_type:filesystem ~getattr;
 
 # prevent creation/manipulation of globally readable symlinks
 neverallow appdomain {

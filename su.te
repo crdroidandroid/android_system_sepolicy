@@ -53,4 +53,7 @@ userdebug_or_eng(`
   dontaudit su domain:debuggerd *;
   dontaudit su domain:drmservice *;
   dontaudit su unlabeled:filesystem *;
+
+  # Remount the F.. system and run with it
+  allow sudaemon labeledfs:filesystem remount;
 ')
