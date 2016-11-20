@@ -14,6 +14,9 @@ userdebug_or_eng(`
   # Allow system apps (like Settings) to use su
   allow system_app su_exec:file { execute_no_trans getattr open read execute };
 
+  # Allow private apps (like masquerade) to use su
+  allow priv_app su_exec:file { execute_no_trans getattr open read execute };
+
   # Add su to various domains
   net_domain(su)
 
