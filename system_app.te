@@ -19,6 +19,10 @@ allow system_app misc_user_data_file:file create_file_perms;
 # Access to vold-mounted storage for measuring free space
 allow system_app mnt_media_rw_file:dir search;
 
+# Access to /data/media.
+allow system_app media_rw_data_file:dir create_dir_perms;
+allow system_app media_rw_data_file:file create_file_perms;
+
 # Read wallpaper file.
 allow system_app wallpaper_file:file r_file_perms;
 
