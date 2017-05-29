@@ -181,6 +181,9 @@ class fd
 class socket
 inherits socket
 
+class can_socket
+inherits socket
+
 class tcp_socket
 inherits socket
 {

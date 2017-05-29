@@ -25,6 +25,7 @@ class fifo_file
 
 # network-related classes
 class socket
+class can_socket
 class tcp_socket
 class udp_socket
 class rawip_socket
