@@ -29,6 +29,8 @@ allow system_app wallpaper_file:file r_file_perms;
 # Read icon file.
 allow system_app icon_file:file r_file_perms;
 
+allow system_app tmpfs:file { read write };
+
 # Write to properties
 set_prop(system_app, debug_prop)
 set_prop(system_app, system_prop)
