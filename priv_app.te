@@ -88,6 +88,7 @@ allow priv_app app_fuse_file:file rw_file_perms;
 # /sys access
 allow priv_app sysfs_zram:dir search;
 allow priv_app sysfs_zram:file r_file_perms;
+allow priv_app sysfs_mac_address:file { getattr read open };
 
 # access the mac address
 allowxperm priv_app self:udp_socket ioctl SIOCGIFHWADDR;
