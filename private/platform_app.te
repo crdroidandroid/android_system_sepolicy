@@ -63,6 +63,10 @@ allow platform_app preloads_data_file:dir r_dir_perms;
 allow platform_app preloads_media_file:file r_file_perms;
 allow platform_app preloads_media_file:dir r_dir_perms;
 
+# Allow CPUInfo access to thermal
+allow platform_app sysfs_thermal:dir search;
+allow platform_app sysfs_thermal:file r_file_perms;
+
 read_runtime_log_tags(platform_app)
 
 ###
