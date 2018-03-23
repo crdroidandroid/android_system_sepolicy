@@ -656,6 +656,7 @@ full_treble_only(`
     -socket_between_core_and_vendor_violators
     -sudaemon
     -system_app
+    -platform_app
   } {
     file_type
     dev_type
