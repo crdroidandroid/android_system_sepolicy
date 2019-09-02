@@ -316,6 +316,7 @@ compatible_property_only(`
   neverallow {
     coredomain
     -init
+    -system_server
     -system_writes_vendor_properties_violators
   } {
     property_type
