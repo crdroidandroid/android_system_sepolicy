@@ -40,6 +40,7 @@ neverallow {
     -apexd
     -ueventd
     -vold
+    -system_app
 } sysfs_leds:file *;
 ')
 
