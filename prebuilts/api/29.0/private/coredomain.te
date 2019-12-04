@@ -11,6 +11,7 @@ neverallow {
     # generic access to sysfs_type
     -ueventd
     -vold
+    -system_app
 } sysfs_leds:file *;
 ')
 
