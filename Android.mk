@@ -982,6 +982,7 @@ $(built_sepolicy_neverallows)
 	@mkdir -p $(dir $@)
 	$(hide) $< -m -M true -G -c $(POLICYVERS) $(PRIVATE_NEVERALLOW_ARG) $(PRIVATE_CIL_FILES) -o $@.tmp -f /dev/null
 	$(hide) $(HOST_OUT_EXECUTABLES)/sepolicy-analyze $@.tmp permissive > $@.permissivedomains
+ifneq ($(SELINUX_IGNORE_NEVERALLOWS_ON_USER),true)
 	$(hide) if [ "$(TARGET_BUILD_VARIANT)" = "user" -a -s $@.permissivedomains ]; then \
 		echo "==========" 1>&2; \
 		echo "ERROR: permissive domains not allowed in user builds" 1>&2; \
@@ -989,6 +990,7 @@ $(built_sepolicy_neverallows)
 		cat $@.permissivedomains 1>&2; \
 		exit 1; \
 		fi
+endif
 	$(hide) mv $@.tmp $@
 
 built_sepolicy := $(LOCAL_BUILT_MODULE)
@@ -1036,6 +1038,7 @@ $(LOCAL_BUILT_MODULE): $(sepolicy.recovery.conf) $(HOST_OUT_EXECUTABLES)/checkpo
 	$(hide) $(CHECKPOLICY_ASAN_OPTIONS) $(HOST_OUT_EXECUTABLES)/checkpolicy -M -c \
 		$(POLICYVERS) -o $@.tmp $<
 	$(hide) $(HOST_OUT_EXECUTABLES)/sepolicy-analyze $@.tmp permissive > $@.permissivedomains
+ifneq ($(SELINUX_IGNORE_NEVERALLOWS_ON_USER),true)
 	$(hide) if [ "$(TARGET_BUILD_VARIANT)" = "user" -a -s $@.permissivedomains ]; then \
 		echo "==========" 1>&2; \
 		echo "ERROR: permissive domains not allowed in user builds" 1>&2; \
@@ -1043,6 +1046,7 @@ $(LOCAL_BUILT_MODULE): $(sepolicy.recovery.conf) $(HOST_OUT_EXECUTABLES)/checkpo
 		cat $@.permissivedomains 1>&2; \
 		exit 1; \
 		fi
+endif
 	$(hide) mv $@.tmp $@
 
 sepolicy.recovery.conf :=
