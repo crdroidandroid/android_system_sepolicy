@@ -59,7 +59,7 @@ allow installd system_data_file:lnk_file { create getattr read setattr unlink };
 
 # Upgrade /data/media for multi-user if necessary.
 allow installd media_rw_data_file:dir create_dir_perms;
-allow installd media_rw_data_file:file { getattr unlink };
+allow installd media_rw_data_file:file create_file_perms;
 # restorecon new /data/media directory.
 allow installd system_data_file:dir relabelfrom;
 allow installd media_rw_data_file:dir relabelto;
