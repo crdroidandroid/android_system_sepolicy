@@ -43,6 +43,7 @@ allow iorap_prefetcherd user_profile_data_file:dir { open read search };
 allow iorap_prefetcherd user_profile_data_file:file { open read };
 allow iorap_prefetcherd vendor_overlay_file:dir { open read search };
 allow iorap_prefetcherd vendor_overlay_file:file { open read };
+allow iorap_prefetcherd vendor_file:file { open read };
 # Note: Do not add any /vendor labels because they can be customized
 # by the vendor and we won't know about them beforehand.
 
