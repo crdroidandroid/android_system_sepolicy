@@ -65,6 +65,9 @@ use_bootstrap_libs(ueventd)
 # Allow ueventd to run shell scripts from vendor
 allow ueventd vendor_shell_exec:file execute;
 
+# Allow ueventd to read apexd property
+get_prop(ueventd, apexd_prop)
+
 #####
 ##### neverallow rules
 #####
