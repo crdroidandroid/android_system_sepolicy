@@ -540,7 +540,7 @@ func (c *policyBinary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	rule.Temporary(bin)
 
 	// permissive check is performed only in user build (not debuggable).
-	if !ctx.Config().Debuggable() {
+	if !ctx.Config().Debuggable() && !ctx.InstallInRoot() {
 		permissiveDomains := pathForModuleOut(ctx, c.stem()+"_permissive")
 		cmd := rule.Command().BuiltTool("sepolicy-analyze").
 			Input(bin).
