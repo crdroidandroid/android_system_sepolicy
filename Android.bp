@@ -757,6 +757,10 @@ se_policy_binary {
     ],
     stem: "sepolicy",
     recovery: true,
+    permissive_domains_on_user_builds: [
+        "backuptool",
+        "recovery",
+    ],
 }
 
 //////////////////////////////////
