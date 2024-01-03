@@ -8,13 +8,9 @@ init_daemon_domain(adbd)
 
 domain_auto_trans(adbd, shell_exec, shell)
 
-# Allow adb to setcon() to tradeinmode.
 allow adbd self:process setcurrent;
+allow adbd su:process dyntransition;
 allow adbd adbd_tradeinmode:process dyntransition;
-
-userdebug_or_eng(`
-  allow adbd su:process dyntransition;
-')
 
 # When 'adb shell' is executed in recovery mode, adbd explicitly
 # switches into shell domain using setcon() because the shell executable
@@ -219,19 +215,9 @@ allow adbd shell_test_data_file:lnk_file create_file_perms;
 ###
 
 # No transitions from adbd to non-shell, non-crash_dump domains. adbd only ever
-# transitions to the shell or tradeinmode domain (except when it crashes). In
-# particular, we never want to see a transition from adbd to su (aka "adb root")
+# transitions to the shell or tradeinmode domain (except when it crashes).
 neverallow adbd { domain -crash_dump -shell -adbd_tradeinmode }:process transition;
-neverallow adbd {
-    domain
-    userdebug_or_eng(`-su')
-    recovery_only(`-shell')
-    -adbd_tradeinmode
-}:process dyntransition;
-
-# Only init is allowed to enter the adbd domain via exec()
-neverallow { domain -init } adbd:process transition;
-neverallow * adbd:process dyntransition;
+neverallow adbd { domain -su recovery_only(`-shell') -adbd_tradeinmode }:process dyntransition;
 
 # allow adbd to check if an app is frozen
 allow adbd cgroup_v2:file read;
