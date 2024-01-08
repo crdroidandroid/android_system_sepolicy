@@ -1,6 +1,6 @@
-userdebug_or_eng(`
-  typeattribute su coredomain;
+typeattribute su coredomain;
 
+userdebug_or_eng(`
   # Exempt userdebug-only coredomains from Treble labeling tests (b/493040969)
   typeattribute su treble_labeling_violators;
 
@@ -29,9 +29,6 @@ userdebug_or_eng(`
   # Exempt userdebug-only coredomains from Treble labeling tests (b/493040969)
   typeattribute su_virtualizationmanager treble_labeling_violators;
   typeattribute su_virtmgr_crosvm treble_labeling_violators;
-
-  # su is also permissive to permit setenforce.
-  permissive su;
 
   app_domain(su)
 
@@ -144,3 +141,6 @@ userdebug_or_eng(`
   typeattribute su hal_wifi_hostapd_client;
   typeattribute su hal_wifi_supplicant_client;
 ')
+
+# su is also permissive to permit setenforce.
+permissive su;

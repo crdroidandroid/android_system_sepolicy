@@ -714,7 +714,10 @@ precompiled_se_policy_binary {
     required: [
         "sepolicy_neverallows",
     ],
-    permissive_domains_on_user_builds: ["backuptool"],
+    permissive_domains_on_user_builds: [
+        "backuptool",
+        "su",
+    ],
 }
 
 // policy for recovery
@@ -750,6 +753,7 @@ se_policy_binary {
     permissive_domains_on_user_builds: [
         "backuptool",
         "recovery",
+        "su",
     ],
 }
 
@@ -805,6 +809,7 @@ se_policy_binary {
     dist: {
         targets: ["sepolicy_finalize"],
     },
+    permissive_domains_on_user_builds: ["su"],
 }
 
 se_policy_conf {
