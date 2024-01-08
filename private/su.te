@@ -1,6 +1,6 @@
-userdebug_or_eng(`
-  typeattribute su coredomain;
+typeattribute su coredomain;
 
+userdebug_or_eng(`
   domain_auto_trans(shell, su_exec, su)
   # Allow dumpstate to call su on userdebug / eng builds to collect
   # additional information.
@@ -22,9 +22,6 @@ userdebug_or_eng(`
   # Allow accessing virtualization (e.g. via the vm command) - ensures virtmgr runs in its
   # own domain.
   virtualizationservice_use(su)
-
-  # su is also permissive to permit setenforce.
-  permissive su;
 
   app_domain(su)
 
@@ -135,3 +132,6 @@ userdebug_or_eng(`
   typeattribute su hal_wifi_hostapd_client;
   typeattribute su hal_wifi_supplicant_client;
 ')
+
+# su is also permissive to permit setenforce.
+permissive su;
