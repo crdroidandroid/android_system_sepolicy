@@ -699,6 +699,7 @@ precompiled_se_policy_binary {
     dist: {
         targets: ["base-sepolicy-files-for-mapping"],
     },
+    permissive_domains_on_user_builds: ["backuptool"],
 }
 
 // policy for recovery
@@ -733,6 +734,10 @@ se_policy_binary {
     srcs: [":recovery_sepolicy.cil"],
     stem: "sepolicy",
     recovery: true,
+    permissive_domains_on_user_builds: [
+        "backuptool",
+        "recovery",
+    ],
 }
 
 //////////////////////////////////
