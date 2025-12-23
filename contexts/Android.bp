@@ -434,6 +434,7 @@ se_policy_binary {
     name: "plat_precompiled_sepolicy",
     srcs: [":plat_sepolicy.cil"],
     installable: false,
+    permissive_domains_on_user_builds: ["su"],
 }
 
 // Use plat_precompiled_sepolicy instead of precompiled_sepolicy because
