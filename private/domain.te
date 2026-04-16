@@ -1570,7 +1570,7 @@ neverallow * same_process_hwservice:hwservice_manager add;
 
 # These filesystems don't allow files or directories to be created, so the permission
 # to do so should never be granted.
-neverallow domain {
+neverallow { domain -init -vendor_init } {
   proc_type
   sysfs_type
 }:dir { add_name create link remove_name rename reparent rmdir write };
