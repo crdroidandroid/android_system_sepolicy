@@ -884,7 +884,7 @@ neverallow { domain -init } init_perf_lsm_hooks_prop:property_service set;
 neverallow { domain -init } vts_status_prop:property_service set;
 
 # Only init can write normal ro.boot. properties
-neverallow { domain -init } bootloader_prop:property_service set;
+neverallow { domain -init -system_server } bootloader_prop:property_service set;
 
 # Only init can write hal.instrumentation.enable
 neverallow { domain -init } hal_instrumentation_prop:property_service set;
