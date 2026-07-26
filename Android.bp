@@ -680,7 +680,10 @@ se_policy_binary {
     name: "precompiled_sepolicy_without_vendor",
     srcs: [":precompiled_sepolicy_without_vendor_srcs"],
     installable: false, // used only for Treble labeling tests
-    permissive_domains_on_user_builds: ["backuptool"],
+    permissive_domains_on_user_builds: [
+        "backuptool",
+        "su",
+    ],
 }
 
 filegroup {
