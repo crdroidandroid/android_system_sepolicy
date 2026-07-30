@@ -17,7 +17,7 @@ allow vold_prepare_subdirs {
   sdk_sandbox_system_data_file
   system_data_file
   vendor_data_file
-  checkin data_file
+  checkin_data_file
 }:dir { open read write add_name remove_name rmdir relabelfrom };
 
 # Added for media storage relabeling support
