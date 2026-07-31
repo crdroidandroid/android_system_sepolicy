@@ -2,6 +2,11 @@ typeattribute bootstat coredomain;
 
 init_daemon_domain(bootstat)
 
+# bootstat queries the AIDL Health HAL for the battery level recorded with
+# factory-reset metrics.
+binder_use(bootstat)
+hal_client_domain(bootstat, hal_health)
+
 # Collect metrics on boot time created by init
 get_prop(bootstat, boottime_prop)
 
