@@ -17,7 +17,12 @@ allow vold_prepare_subdirs {
   sdk_sandbox_system_data_file
   system_data_file
   vendor_data_file
+  checkin_data_file
 }:dir { open read write add_name remove_name rmdir relabelfrom };
+
+# Added for media storage relabeling support
+allow vold_prepare_subdirs media_rw_data_file:dir { relabelto relabelfrom };
+
 allow vold_prepare_subdirs {
     apex_data_file_type
     apex_module_data_file
