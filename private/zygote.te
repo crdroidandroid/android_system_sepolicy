@@ -137,6 +137,10 @@ allow zygote cgroup_v2:dir create_dir_perms;
 allow zygote cgroup_v2:{ file lnk_file } { r_file_perms setattr };
 allow zygote self:global_capability_class_set sys_admin;
 
+# AxSandbox can hide the adbd control endpoint inside a selected app's private
+# mount namespace before the Zygote child transitions to the app domain.
+allow zygote adbd_socket:sock_file { getattr mounton };
+
 # Allow zygote to stat the files that it opens. The zygote must
 # be able to inspect them so that it can reopen them on fork
 # if necessary: b/30963384.
