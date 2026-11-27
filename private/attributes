@@ -30,3 +30,6 @@ expandattribute update_provider false;
 # of the OMAPI services. Remove once the RELEASE_NATIVE_OMAPI flag is cleaned
 # up and the app-based implementation is removed.
 attribute omapi_server;
+
+# Core domains allowed to read pstore files
+attribute pstorefs_reader;

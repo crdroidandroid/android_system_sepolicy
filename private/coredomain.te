@@ -215,6 +215,7 @@ full_treble_only(`
     -init
     -logd
     -logpersist
+    -pstorefs_reader
     -recovery_persist
     -recovery_refresh
     -shell
